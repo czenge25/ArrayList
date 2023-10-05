@@ -36,6 +36,22 @@ public class Node<T> {
         this.data = data;
     }
 
+    public Node getChild() {
+        return child;
+    }
+
+    public void setChild(Node n) {
+        child = n;
+    }
+
+    public Node getParent() {
+        return parent;
+    }
+
+    public void setParent(Node n) {
+        parent = n;
+    }
+
     //Provides a string representation of the node by converting its data to a string
     public String toString() {
         return "Node: " + this.data.toString();
