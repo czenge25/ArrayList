@@ -35,16 +35,33 @@ public class ArrayList<T> {
     }
 
     public T remove(int i) {
-        Node place = root;
-        Node parent = root;
-        Node child = root;
-        for (int j = 0; j <= i; j++) {
-            place = place.getChild();
-        }
-        if (place.getChild() != null && place.getParent() != null) {
 
+        if (i < 0 || i >= length) {
+            throw new IndexOutOfBoundsException();
         }
-        return
+
+        Node<T> currentNode = root;
+
+        for (int j = 0; j < i; j++) {
+            currentNode = currentNode.getChild();
+        }
+
+        T removedData = currentNode.getData();
+        Node<T> parentNode = currentNode.getParent();
+        Node<T> childNode = currentNode.getChild();
+
+        if (parentNode != null) {
+            parentNode.setChild(childNode);
+        } else {
+            root = childNode;
+        }
+
+        if (childNode != null) {
+            childNode.setParent(parentNode);
+        }
+        length--;
+
+        return removedData;
     }
 
     public T get(int i) {
