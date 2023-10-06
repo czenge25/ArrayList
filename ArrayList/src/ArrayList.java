@@ -67,6 +67,6 @@ public class ArrayList<T> {
 
 
     public int size() {
-
+        return length;
     }
 }
