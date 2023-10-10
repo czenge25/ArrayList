@@ -65,14 +65,25 @@ public class ArrayList<T> {
     }
 
     public T get(int i) {
+        Node place = root;
+        for( int j =0; j<=i; j++) {
+            place= place.getChild();
+        }
+        return (T) place.getData();
 
     }
 
     public T set(int i, T data) {
-
+        Node place = root;
+        for( int j =0; j<=i; j++) {
+            place= place.getChild();
+        }
+        place.setData(data);
+        return data;
     }
 
-    public int size() {
 
+    public int size() {
+        return length;
     }
 }
