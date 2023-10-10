@@ -33,36 +33,36 @@ public class ArrayList<T> {
     public void add(int i, T data) {
         Node<T> newNode = new Node<>(data);
 
-        if (index < 0) {
+        if (index < 0 || index > length) {
             throw new IndexOutOfBoundsException("Index is out of bounds");
         }
+
         if (index == 0) {
             newNode.setChild(root);
             if (root != null) {
                 root.setParent(newNode);
             }
             root = newNode;
-            return;
-        }
-
-        Node<T> current = root;
-        int currentIndex = 0;
-        while (current != null && currentIndex < index - 1) {
-            current = current.getChild();
-            currentIndex++;
-        }
-
-        if (current != null) {
-            Node<T> next = current.getChild();
-            current.setChild(newNode);
-            newNode.setParent(current);
-            newNode.setChild(next);
-            if (next != null) {
-                next.setParent(newNode);
-            }
         } else {
-            throw new IndexOutOfBoundsException("Index is out of bounds");
+            Node<T> current = root;
+            int currentIndex = 0;
+
+            while (current != null && currentIndex < index - 1) {
+                current = current.getChild();
+                currentIndex++;
+            }
+
+            if (current != null) {
+                Node<T> next = current.getChild();
+                current.setChild(newNode);
+                newNode.setParent(current);
+                newNode.setChild(next);
+                if (next != null) {
+                    next.setParent(newNode);
+                }
+            }
         }
+        length++;
     }
 
     public T remove(int i) {
