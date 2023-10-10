@@ -31,13 +31,13 @@ public class ArrayList<T> {
     }
 
     public void add(int i, T data) {
-        Node<T> newNode = new Node<>(data);
-
-        if (index < 0 || index > length) {
+        if (i < 0 || i > length) {
             throw new IndexOutOfBoundsException("Index is out of bounds");
         }
 
-        if (index == 0) {
+        Node<T> newNode = new Node<>(data);
+
+        if (i == 0) {
             newNode.setChild(root);
             if (root != null) {
                 root.setParent(newNode);
@@ -47,7 +47,7 @@ public class ArrayList<T> {
             Node<T> current = root;
             int currentIndex = 0;
 
-            while (current != null && currentIndex < index - 1) {
+            while (current != null && currentIndex < i - 1) {
                 current = current.getChild();
                 currentIndex++;
             }
