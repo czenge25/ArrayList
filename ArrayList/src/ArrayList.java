@@ -15,23 +15,54 @@ public class ArrayList<T> {
     }
 
     public boolean add(T data) {
-        Node place = root;
         Node n = new Node(data);
+        if (root == null) {
+            root = n;
+            return true;
+        }
+
+        Node place = root;
         while (place.getChild() != null) {
             place = place.getChild();
-            length += 1;
         }
         place.setChild(n);
+        length++;
         return true;
     }
 
     public void add(int i, T data) {
-        Node place = root;
-        Node n = new Node(data);
-        for (int j = 0; j <= i; j++) {
-            place = place.getChild();
+        Node<T> newNode = new Node<>(data);
+
+        if (index < 0) {
+            throw new IndexOutOfBoundsException("Index is out of bounds");
         }
-        place.setChild(n);
+        if (index == 0) {
+            newNode.setChild(root);
+            if (root != null) {
+                root.setParent(newNode);
+            }
+            root = newNode;
+            return;
+        }
+
+        Node<T> current = root;
+        int currentIndex = 0;
+        while (current != null && currentIndex < index - 1) {
+            current = current.getChild();
+            currentIndex++;
+        }
+
+        if (current != null) {
+            Node<T> next = current.getChild();
+            current.setChild(newNode);
+            newNode.setParent(current);
+            newNode.setChild(next);
+            if (next != null) {
+                next.setParent(newNode);
+            }
+        } else {
+            throw new IndexOutOfBoundsException("Index is out of bounds");
+        }
     }
 
     public T remove(int i) {
