@@ -121,9 +121,9 @@ public class ArrayList<T> {
     public String toString() {
         String list = "";
         Node place = root;
-        for(int i = 0; i<=length; i++) {
-            place = place.getChild();
+        for(int i = 0; i <= length; i++) {
             list += (place + ", ");
+            place = place.getChild();
         }
         return list;
     }
