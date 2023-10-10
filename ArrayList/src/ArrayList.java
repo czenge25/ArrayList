@@ -117,4 +117,14 @@ public class ArrayList<T> {
     public int size() {
         return length;
     }
+
+    public String toString() {
+        String list = "";
+        Node place = root;
+        for(int i = 0; i<=length; i++) {
+            place = place.getChild();
+            list += (place + ", ");
+        }
+        return list;
+    }
 }
