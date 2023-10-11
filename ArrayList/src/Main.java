@@ -1,3 +1,9 @@
+/*
+CZ
+10/11/23
+HK
+ */
+
 public class Main {
     public static void main(String[] args) {
 
@@ -15,6 +21,7 @@ public class Main {
         System.out.println(arrayList);
         arrayList.set(0,"5");
         System.out.println(arrayList);
+        System.out.println(arrayList.get(1));
 
 
 

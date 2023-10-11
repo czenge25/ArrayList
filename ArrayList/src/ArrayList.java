@@ -93,7 +93,7 @@ public class ArrayList<T> {
 
     public T get(int i) {
         Node place = root;
-        for( int j =0; j<=i; j++) {
+        for( int j =0; j<i; j++) {
             place= place.getChild();
         }
         return (T) place.getData();
