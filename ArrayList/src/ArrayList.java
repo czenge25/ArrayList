@@ -6,14 +6,14 @@ HK
 
 public class ArrayList<T> {
 
-    private int index;
-    private Node root;
+    private Node root;  // The root node of the linked list
 
     public ArrayList() {
-
+        // Empty constructor for ArrayList class
     }
 
     public boolean add(T data) {
+        // Add a new node with the specified data to the end of the list
         Node n = new Node(data);
         if (root == null) {
             root = n;
@@ -29,6 +29,7 @@ public class ArrayList<T> {
     }
 
     public void add(int i, T data) {
+        // Add a new node with the specified data at the specified index i in the list
         if (i < 0 || i > size()) {
             throw new IndexOutOfBoundsException("Index is out of bounds");
         }
@@ -63,7 +64,7 @@ public class ArrayList<T> {
     }
 
     public T remove(int i) {
-
+        // Remove the node at the specified index i from the list
         if (i < 0 || i >= size()) {
             throw new IndexOutOfBoundsException();
         }
@@ -92,25 +93,26 @@ public class ArrayList<T> {
     }
 
     public T get(int i) {
+        // Retrieve the data from the node at the specified index
         Node place = root;
-        for( int j =0; j<i; j++) {
-            place= place.getChild();
+        for (int j = 0; j < i; j++) {
+            place = place.getChild();
         }
         return (T) place.getData();
-
     }
 
     public T set(int i, T data) {
+        // Set the data of the node at the specified index with the new data
         Node place = root;
-        for( int j =0; j<i; j++) {
-            place= place.getChild();
+        for (int j = 0; j < i; j++) {
+            place = place.getChild();
         }
         place.setData(data);
         return data;
     }
 
-
     public int size() {
+        // Return the number of nodes in the list
         int count = 0;
         Node<T> place = root;
         while (place != null) {
@@ -121,11 +123,12 @@ public class ArrayList<T> {
     }
 
     public String toString() {
-        StringBuilder list = new StringBuilder();
+        // Return a String representation of the list
+        StringBuilder list = new StringBuilder(); // Creates new StringBuilder to build String representation
         Node<T> place = root;
         list.append("(");
         while (place != null) {
-            list.append(place);
+            list.append(place);  // Use the overridden toString method
             place = place.getChild();
             if (place != null) {
                 list.append(", ");
