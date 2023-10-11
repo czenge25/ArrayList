@@ -8,7 +8,6 @@ public class ArrayList<T> {
 
     private int index;
     private Node root;
-    private int length;
 
     public ArrayList() {
 
@@ -26,12 +25,11 @@ public class ArrayList<T> {
             place = place.getChild();
         }
         place.setChild(n);
-        length++;
         return true;
     }
 
     public void add(int i, T data) {
-        if (i < 0 || i > length) {
+        if (i < 0 || i > size()) {
             throw new IndexOutOfBoundsException("Index is out of bounds");
         }
 
@@ -62,12 +60,11 @@ public class ArrayList<T> {
                 }
             }
         }
-        length++;
     }
 
     public T remove(int i) {
 
-        if (i < 0 || i >= length) {
+        if (i < 0 || i >= size()) {
             throw new IndexOutOfBoundsException();
         }
 
@@ -90,7 +87,6 @@ public class ArrayList<T> {
         if (childNode != null) {
             childNode.setParent(parentNode);
         }
-        length--;
 
         return removedData;
     }
@@ -115,13 +111,19 @@ public class ArrayList<T> {
 
 
     public int size() {
-        return length;
+        int count = 0;
+        Node<T> place = root;
+        while (place != null) {
+            count++;
+            place = place.getChild();
+        }
+        return count;
     }
 
     public String toString() {
         String list = "";
         Node place = root;
-        for(int i = 0; i <= length; i++) {
+        for(int i = 0; i <= size(); i++) {
             list += (place + ", ");
             place = place.getChild();
         }
