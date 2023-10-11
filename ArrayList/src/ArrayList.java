@@ -121,12 +121,17 @@ public class ArrayList<T> {
     }
 
     public String toString() {
-        String list = "";
-        Node place = root;
-        for(int i = 0; i <= size(); i++) {
-            list += (place + ", ");
+        StringBuilder list = new StringBuilder();
+        Node<T> place = root;
+        list.append("(");
+        while (place != null) {
+            list.append(place);
             place = place.getChild();
+            if (place != null) {
+                list.append(", ");
+            }
         }
-        return list;
+        list.append(")");
+        return list.toString();
     }
 }
