@@ -8,6 +8,11 @@ public class Main {
         arrayList.add(1, "language");
 
         System.out.println(arrayList);
+        System.out.println(arrayList.size());
+
+        arrayList.remove(2);
+        System.out.println(arrayList.size());
+        System.out.println(arrayList);
 
     }
 }
