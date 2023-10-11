@@ -13,6 +13,10 @@ public class Main {
         arrayList.remove(2);
         System.out.println(arrayList.size());
         System.out.println(arrayList);
+        arrayList.set(0,"5");
+        System.out.println(arrayList);
+
+
 
     }
 }

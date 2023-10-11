@@ -102,7 +102,7 @@ public class ArrayList<T> {
 
     public T set(int i, T data) {
         Node place = root;
-        for( int j =0; j<=i; j++) {
+        for( int j =0; j<i; j++) {
             place= place.getChild();
         }
         place.setData(data);
